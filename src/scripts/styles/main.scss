@@ -24,7 +24,8 @@ ul,
 li,
 div,
 h1,
-button {
+button,
+input {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -37,7 +38,7 @@ button {
 }
 
 ul {
-  max-height: 35vh;
+  max-height: 40vh;
   overflow: auto;
 }
 
@@ -61,6 +62,20 @@ ul {
     display: flex;
     align-items: center;
   }
+}
+
+input[type=text] {
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid #d6d6d6c0;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px 15px;
+  font-style: italic;
+}
+
+input[type=text]:focus-visible {
+  outline-style: none;
 }
 
 .card {
