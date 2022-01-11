@@ -10,16 +10,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-main {
-  width: 40vw;
-  box-shadow: 5px 3px 6px 6px #d6d6d6c0;
-  h1 {
-    font-size: 20px;
-    font-weight: 400;
-    padding: 20px 15px;
-  }
-}
-
 ul,
 li,
 div,
@@ -29,6 +19,17 @@ input {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+main {
+  width: 40vw;
+  box-shadow: 5px 3px 6px 6px #d6d6d6c0;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 15px;
+  }
 }
 
 button {
@@ -48,6 +49,7 @@ ul {
   justify-content: space-between;
   list-style: none;
   padding: 10px 15px;
+
   p {
     margin: 0;
     margin-left: 20px;
@@ -83,9 +85,9 @@ input[type=text]:focus-visible {
 }
 
 input[type=checkbox] {
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  -o-appearance:none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
 }
 
 input[type=checkbox]:hover,
