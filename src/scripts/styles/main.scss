@@ -1,1 +1,138 @@
 /* Include your styles here */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul,
+li,
+div,
+h1,
+button,
+input {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  width: 40vw;
+  box-shadow: 5px 3px 6px 6px #d6d6d6c0;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 15px;
+  }
+}
+
+button {
+  appearance: none;
+  background: transparent;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+ul {
+  max-height: 40vh;
+  overflow: auto;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 10px 15px;
+
+  p {
+    margin: 0;
+    margin-left: 20px;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+input[type=text] {
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid #d6d6d6c0;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px 15px;
+  font-style: italic;
+}
+
+input[type=text]:focus-visible {
+  outline-style: none;
+}
+
+.card {
+  border-bottom: 2px solid #d6d6d6c0;
+}
+
+input[type=checkbox] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.box {
+  position: relative;
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 2px solid #9b9b9bdc;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .checkmark {
+    background-color: #9b9b9bdc;
+  }
+}
+
+.clear {
+  width: 100%;
+  background-color: #f0f0f09c;
+  padding: 20px;
+
+  span {
+    margin: 0 auto;
+    font-size: 16px;
+    color: #727272e5;
+  }
+}
