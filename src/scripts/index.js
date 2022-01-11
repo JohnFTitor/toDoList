@@ -1,3 +1,8 @@
+import './styles/main.scss';
+import Dots from './icons/dots.svg';
+
+const listContainer = document.querySelector('ul');
+
 let tasks = [
   {
     description: 'Task 4',
@@ -28,7 +33,26 @@ let tasks = [
 
 const render = () => {
   tasks = tasks.sort((a, b) => a.index - b.index);
-  console.log(tasks);
+  tasks.forEach((task) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('task');
+
+    const listAttributes = document.createElement('div');
+
+    const description = document.createElement('p');
+    description.textContent = task.description;
+    listAttributes.appendChild(description);
+
+    description.insertAdjacentHTML('beforebegin', '<input type="checkbox">');
+
+    listItem.appendChild(listAttributes);
+    const dots = new Image();
+    dots.src = Dots;
+    dots.alt = '';
+    listItem.appendChild(dots);
+
+    listContainer.appendChild(listItem);
+  });
 };
 
 window.onload = () => {
