@@ -43,7 +43,10 @@ const render = () => {
     description.textContent = task.description;
     listAttributes.appendChild(description);
 
-    description.insertAdjacentHTML('beforebegin', '<input type="checkbox" class="box">');
+    description.insertAdjacentHTML('beforebegin', `<label class="box">
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>`);
 
     listItem.appendChild(listAttributes);
     const dots = new Image();

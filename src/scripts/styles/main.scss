@@ -38,6 +38,10 @@ button {
   border: none;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 ul {
   max-height: 40vh;
   overflow: auto;
@@ -90,15 +94,45 @@ input[type=checkbox] {
   -o-appearance: none;
 }
 
-input[type=checkbox]:hover,
-button:hover {
-  cursor: pointer;
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
 }
 
 .box {
+  position: relative;
   margin: 0;
   width: 18px;
   height: 18px;
   box-sizing: border-box;
   border: 2px solid #9b9b9bdc;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .checkmark {
+    background-color: #9b9b9bdc;
+  }
+}
+
+.clear {
+  width: 100%;
+  background-color: #f0f0f09c;
+  padding: 20px;
+
+  span {
+    margin: 0 auto;
+    font-size: 16px;
+    color: #727272e5;
+  }
 }
