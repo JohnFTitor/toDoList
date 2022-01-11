@@ -49,7 +49,10 @@ const render = () => {
     const dots = new Image();
     dots.src = Dots;
     dots.alt = '';
-    listItem.appendChild(dots);
+
+    const dragButton = document.createElement('button');
+    dragButton.appendChild(dots);
+    listItem.appendChild(dragButton);
 
     listContainer.appendChild(listItem);
   });
