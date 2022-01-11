@@ -35,7 +35,7 @@ const render = () => {
   tasks = tasks.sort((a, b) => a.index - b.index);
   tasks.forEach((task) => {
     const listItem = document.createElement('li');
-    listItem.classList.add('task');
+    listItem.classList.add('task', 'card');
 
     const listAttributes = document.createElement('div');
 
@@ -43,7 +43,7 @@ const render = () => {
     description.textContent = task.description;
     listAttributes.appendChild(description);
 
-    description.insertAdjacentHTML('beforebegin', '<input type="checkbox">');
+    description.insertAdjacentHTML('beforebegin', '<input type="checkbox" class="box">');
 
     listItem.appendChild(listAttributes);
     const dots = new Image();
