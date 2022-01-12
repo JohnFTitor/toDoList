@@ -5,6 +5,8 @@ const tasks = new TaskCollection();
 
 const addForm = document.querySelector('#addForm');
 
+tasks.addTask('Something to Do'); 
+
 const render = () => {
   tasks.list = tasks.list.sort((a, b) => a.index - b.index);
   tasks.list.forEach((task) => {
