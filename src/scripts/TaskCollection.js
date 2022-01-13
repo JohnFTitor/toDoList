@@ -11,6 +11,7 @@ export default class TaskCollection {
 
   saveStorage() {
     localStorage.setItem('collection', JSON.stringify(this.list));
+    console.log(this.list);
   }
 
   addTask(description, status = false) {
@@ -53,7 +54,6 @@ export default class TaskCollection {
 
     const listItem = document.createElement('div');
     listItem.classList.add('task');
-    listItem.setAttribute('draggable', true);
     listItem.setAttribute('id', `card-${task.index}`);
 
     const listAttributes = document.createElement('div');
@@ -77,6 +77,7 @@ export default class TaskCollection {
 
     const dragButton = document.createElement('button');
     dragButton.appendChild(dots);
+    dragButton.setAttribute('draggable', true);
     listItem.appendChild(dragButton);
 
     const checkBox = listItem.querySelector('.check');
@@ -96,11 +97,9 @@ export default class TaskCollection {
       dots.src = Del;
     });
 
-    description.addEventListener('click', () => {
-      const removeTask = this.removeTask.bind(this, task, listItem);
-      task.listener = removeTask;
-      dragButton.addEventListener('mouseup', removeTask);
-    }, { once: true });
+    dragButton.addEventListener('mouseup', () => {
+      this.removeTask(task);
+    });
 
     description.addEventListener('focusout', () => {
       listItem.style.backgroundColor = 'white';
