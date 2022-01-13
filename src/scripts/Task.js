@@ -1,7 +1,7 @@
 export default class Task {
-  constructor(description, index) {
+  constructor(description, index, status) {
     this.description = description;
-    this.completed = false;
+    this.completed = status;
     this.index = index;
   }
 }

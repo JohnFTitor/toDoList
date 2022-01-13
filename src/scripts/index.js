@@ -1,9 +1,11 @@
 import './styles/main.scss';
 import TaskCollection from './TaskCollection.js';
+import { clearCompleted } from './completed.js';
 
 const tasks = new TaskCollection();
 
 const addForm = document.querySelector('#addForm');
+const clearButton = document.querySelector('#clear');
 
 const render = () => {
   tasks.list = tasks.list.sort((a, b) => a.index - b.index);
@@ -28,3 +30,10 @@ window.onload = () => {
     render();
   }
 };
+
+clearButton.addEventListener('click', () => {
+  const completedList = clearCompleted(tasks.list);
+  completedList.forEach((task) => {
+    tasks.removeTask(task);
+  });
+});
