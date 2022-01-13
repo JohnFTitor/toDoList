@@ -33,21 +33,28 @@ export default class TaskCollection {
 
   removeTask(currentTask) {
     this.list.splice(currentTask.index - 1, 1);
+    const element = listContainer.querySelector(`#card-${currentTask.index}`);
+    listContainer.removeChild(element.parentNode);
     let index = 1;
     this.list.forEach((task) => {
       if (task.index - index > 0) {
+        const nextTask = listContainer.querySelector(`#card-${task.index}`);
         task.index -= 1;
+        nextTask.setAttribute('id', `card-${task.index}`);
       }
       index += 1;
     });
     this.saveStorage();
-    listContainer.removeChild(currentTask.pointer);
   }
 
   display(task) {
-    const listItem = document.createElement('li');
-    listItem.classList.add('task', 'card');
-    task.pointer = listItem;
+    const listDropZone = document.createElement('li');
+    listDropZone.classList.add('task', 'card', 'dropzone');
+
+    const listItem = document.createElement('div');
+    listItem.classList.add('task');
+    listItem.setAttribute('draggable', true);
+    listItem.setAttribute('id', `card-${task.index}`);
 
     const listAttributes = document.createElement('div');
 
@@ -76,7 +83,8 @@ export default class TaskCollection {
     checkBox.checked = task.completed;
     setStatus(task, checkBox, description);
 
-    listContainer.appendChild(listItem);
+    listDropZone.appendChild(listItem);
+    listContainer.appendChild(listDropZone);
 
     description.addEventListener('change', (event) => {
       task.description = event.target.value;
