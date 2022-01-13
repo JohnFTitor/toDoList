@@ -1,6 +1,7 @@
 import Task from './Task.js';
 import Dots from './icons/dots.svg';
 import Del from './icons/delete.svg';
+import {setStatus} from './completed.js';
 
 const listContainer = document.querySelector('ul');
 export default class TaskCollection {
@@ -12,8 +13,8 @@ export default class TaskCollection {
     localStorage.setItem('collection', JSON.stringify(this.list));
   }
 
-  addTask(description) {
-    const task = new Task(description, this.list.length + 1);
+  addTask(description, status=false) {
+    const task = new Task(description, this.list.length + 1, status);
     this.list.push(task);
     this.saveStorage();
     return task;
@@ -23,14 +24,14 @@ export default class TaskCollection {
     const collection = JSON.parse(localStorage.getItem('collection'));
     if (collection) {
       collection.forEach((task) => {
-        this.addTask(task.description);
+        this.addTask(task.description, task.completed);
       });
       return true;
     }
     return false;
   }
 
-  removeTask(currentTask, pointer) {
+  removeTask(currentTask) {
     this.list.splice(currentTask.index - 1, 1);
     let index = 1;
     this.list.forEach((task) => {
@@ -40,12 +41,13 @@ export default class TaskCollection {
       index += 1;
     });
     this.saveStorage();
-    listContainer.removeChild(pointer);
+    listContainer.removeChild(currentTask.pointer);
   }
 
   display(task) {
     const listItem = document.createElement('li');
     listItem.classList.add('task', 'card');
+    task.pointer = listItem;
 
     const listAttributes = document.createElement('div');
 
@@ -56,7 +58,7 @@ export default class TaskCollection {
     listAttributes.appendChild(description);
 
     description.insertAdjacentHTML('beforebegin', `<label class="box">
-      <input type="checkbox">
+      <input class="check"  type="checkbox">
       <span class="checkmark"></span>
     </label>`);
 
@@ -69,6 +71,10 @@ export default class TaskCollection {
     const dragButton = document.createElement('button');
     dragButton.appendChild(dots);
     listItem.appendChild(dragButton);
+
+    const checkBox = listItem.querySelector('.check');
+    checkBox.checked = task.completed;
+    setStatus(task, checkBox, description);
 
     listContainer.appendChild(listItem);
 
@@ -92,5 +98,10 @@ export default class TaskCollection {
       listItem.style.backgroundColor = 'white';
       dots.src = Dots;
     });
+
+    checkBox.addEventListener('change', () => {
+      setStatus(task, checkBox, description);
+      this.saveStorage();
+    })
   }
 }
