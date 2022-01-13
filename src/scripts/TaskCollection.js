@@ -1,7 +1,7 @@
 import Task from './Task.js';
 import Dots from './icons/dots.svg';
 import Del from './icons/delete.svg';
-import {setStatus} from './completed.js';
+import { setStatus } from './completed.js';
 
 const listContainer = document.querySelector('ul');
 export default class TaskCollection {
@@ -13,7 +13,7 @@ export default class TaskCollection {
     localStorage.setItem('collection', JSON.stringify(this.list));
   }
 
-  addTask(description, status=false) {
+  addTask(description, status = false) {
     const task = new Task(description, this.list.length + 1, status);
     this.list.push(task);
     this.saveStorage();
@@ -102,6 +102,6 @@ export default class TaskCollection {
     checkBox.addEventListener('change', () => {
       setStatus(task, checkBox, description);
       this.saveStorage();
-    })
+    });
   }
 }

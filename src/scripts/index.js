@@ -1,6 +1,6 @@
 import './styles/main.scss';
 import TaskCollection from './TaskCollection.js';
-import {clearCompleted} from './completed';
+import { clearCompleted } from './completed.js';
 
 const tasks = new TaskCollection();
 
@@ -35,5 +35,5 @@ clearButton.addEventListener('click', () => {
   const completedList = clearCompleted(tasks.list);
   completedList.forEach((task) => {
     tasks.removeTask(task);
-  })
-})
+  });
+});
