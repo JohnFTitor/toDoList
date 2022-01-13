@@ -1,11 +1,11 @@
-import "./styles/main.scss";
-import TaskCollection from "./TaskCollection.js";
-import { clearCompleted } from "./completed.js";
+import './styles/main.scss';
+import TaskCollection from './TaskCollection.js';
+import { clearCompleted } from './completed.js';
 
 const tasks = new TaskCollection();
 
-const addForm = document.querySelector("#addForm");
-const clearButton = document.querySelector("#clear");
+const addForm = document.querySelector('#addForm');
+const clearButton = document.querySelector('#clear');
 
 const render = () => {
   tasks.list = tasks.list.sort((a, b) => a.index - b.index);
@@ -14,14 +14,14 @@ const render = () => {
   });
 };
 
-addForm.addEventListener("submit", (event) => {
+addForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const input = addForm.querySelector("input");
+  const input = addForm.querySelector('input');
   const inputValue = input.value;
   if (inputValue) {
     const task = tasks.addTask(inputValue);
     tasks.display(task);
-    input.value = "";
+    input.value = '';
   }
 });
 
@@ -31,7 +31,7 @@ window.onload = () => {
   }
 };
 
-clearButton.addEventListener("click", () => {
+clearButton.addEventListener('click', () => {
   const completedList = clearCompleted(tasks.list);
   completedList.forEach((task) => {
     tasks.removeTask(task);
@@ -43,47 +43,47 @@ let dragged;
 let currentListItem;
 
 listContainer.addEventListener(
-  "dragstart",
-  function (event) {
-    dragged = event.target.parentNode.parentNode; //Selects the card
+  'dragstart',
+  (event) => {
+    dragged = event.target.parentNode.parentNode; // Selects the card
     currentListItem = dragged;
 
     event.target.parentNode.parentNode.style.opacity = 0;
   },
-  false
+  false,
 );
 
-listContainer.addEventListener("dragend", (event) => {
+listContainer.addEventListener('dragend', (event) => {
   event.target.parentNode.parentNode.style.opacity = 1;
 });
 
 listContainer.addEventListener(
-  "dragover",
-  function (event) {
+  'dragover',
+  (event) => {
     // prevent default to allow drop
     event.preventDefault();
   },
-  false
+  false,
 );
 
 listContainer.addEventListener(
-  "dragenter",
-  function (event) {
+  'dragenter',
+  (event) => {
     if (event.target.className === 'task dropzone') {
       currentListItem = event.target;
 
-      let temp = currentListItem.parentNode;
+      const temp = currentListItem.parentNode;
       dragged.parentNode.appendChild(currentListItem);
       dragged.parentNode.removeChild(dragged);
       temp.appendChild(dragged);
     }
   },
-  false
+  false,
 );
 
 listContainer.addEventListener(
-  "drop",
-  function (event) {
+  'drop',
+  (event) => {
     // prevent default action (open as link for some elements)
     event.preventDefault();
     event.target.parentNode.parentNode.style.opacity = 1;
@@ -98,16 +98,16 @@ listContainer.addEventListener(
       const description = container.querySelector('.description');
       for (let i = 0; i < tasks.list.length; i += 1) {
         const task = tasks.list[i];
-        if(task.description === description.value){
+        if (task.description === description.value) {
           task.index = +container.id.substr(container.id.length - 1);
-          checked.push(tasks.list.splice(i,1)[0]);
+          checked.push(tasks.list.splice(i, 1)[0]);
           break;
-        } 
+        }
       }
-    })
+    });
     tasks.list = [...checked];
     tasks.list = tasks.list.sort((a, b) => a.index - b.index);
     tasks.saveStorage();
   },
-  false
+  false,
 );
