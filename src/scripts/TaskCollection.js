@@ -16,30 +16,29 @@ export default class TaskCollection {
     const task = new Task(description, this.list.length + 1);
     this.list.push(task);
     this.saveStorage();
-    console.log(this.list);
     return task;
   }
 
   loadStorage() {
     const collection = JSON.parse(localStorage.getItem('collection'));
     if (collection) {
-      collection.forEach(task => {
+      collection.forEach((task) => {
         this.addTask(task.description);
-      })
+      });
       return true;
-    } 
+    }
     return false;
   }
 
   removeTask(currentTask, pointer) {
     this.list.splice(currentTask.index - 1, 1);
     let index = 1;
-    this.list.forEach(task => {
-      if (task.index - index > 0 ){
+    this.list.forEach((task) => {
+      if (task.index - index > 0) {
         task.index -= 1;
       }
       index += 1;
-    })
+    });
     this.saveStorage();
     listContainer.removeChild(pointer);
   }
@@ -75,7 +74,6 @@ export default class TaskCollection {
 
     description.addEventListener('change', (event) => {
       task.description = event.target.value;
-      console.log(this.list);
       this.saveStorage();
     });
 
@@ -88,7 +86,7 @@ export default class TaskCollection {
       const removeTask = this.removeTask.bind(this, task, listItem);
       task.listener = removeTask;
       dragButton.addEventListener('mouseup', removeTask);
-    }, {once: true});
+    }, { once: true });
 
     description.addEventListener('focusout', () => {
       listItem.style.backgroundColor = 'white';

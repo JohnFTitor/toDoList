@@ -24,7 +24,7 @@ addForm.addEventListener('submit', (event) => {
 });
 
 window.onload = () => {
-  if (tasks.loadStorage()){
+  if (tasks.loadStorage()) {
     render();
   }
 };
