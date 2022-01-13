@@ -47,6 +47,21 @@ ul {
   overflow: auto;
 }
 
+input[type=text] {
+  appearance: none;
+  border: none;
+  border-bottom: 2px solid #d6d6d6c0;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px 15px;
+  font-style: italic;
+  background-color: transparent;
+}
+
+input[type=text]:focus-visible {
+  outline-style: none;
+}
+
 .task {
   display: flex;
   align-items: center;
@@ -54,9 +69,9 @@ ul {
   list-style: none;
   padding: 10px 15px;
 
-  p {
-    margin: 0;
-    margin-left: 20px;
+  input[type=text] {
+    padding: 0 20px;
+    border: none;
   }
 
   img {
@@ -67,21 +82,8 @@ ul {
   div {
     display: flex;
     align-items: center;
+    width: 100%;
   }
-}
-
-input[type=text] {
-  appearance: none;
-  border: none;
-  border-bottom: 2px solid #d6d6d6c0;
-  width: 100%;
-  font-size: 16px;
-  padding: 20px 15px;
-  font-style: italic;
-}
-
-input[type=text]:focus-visible {
-  outline-style: none;
 }
 
 .card {
