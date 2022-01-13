@@ -11,7 +11,6 @@ export default class TaskCollection {
 
   saveStorage() {
     localStorage.setItem('collection', JSON.stringify(this.list));
-    console.log(this.list);
   }
 
   addTask(description, status = false) {
@@ -50,10 +49,10 @@ export default class TaskCollection {
 
   display(task) {
     const listDropZone = document.createElement('li');
-    listDropZone.classList.add('task', 'card', 'dropzone');
+    listDropZone.classList.add('task', 'card', 'dropparent');
 
     const listItem = document.createElement('div');
-    listItem.classList.add('task');
+    listItem.classList.add('task', 'dropzone');
     listItem.setAttribute('id', `card-${task.index}`);
 
     const listAttributes = document.createElement('div');

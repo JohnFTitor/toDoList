@@ -69,7 +69,7 @@ listContainer.addEventListener(
 listContainer.addEventListener(
   "dragenter",
   function (event) {
-    if (event.target.nodeName === "DIV") {
+    if (event.target.className === 'task dropzone') {
       currentListItem = event.target;
 
       let temp = currentListItem.parentNode;
