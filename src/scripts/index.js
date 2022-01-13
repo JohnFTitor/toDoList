@@ -89,19 +89,23 @@ listContainer.addEventListener(
     event.target.parentNode.parentNode.style.opacity = 1;
     const listItems = listContainer.querySelectorAll('li');
     let index = 1;
+    const checked = [];
+
     listItems.forEach((item) => {
       const container = item.firstChild;
       container.setAttribute('id', `card-${index}`);
       index += 1;
-
       const description = container.querySelector('.description');
-      tasks.list.forEach((task) => {
+      for (let i = 0; i < tasks.list.length; i += 1) {
+        const task = tasks.list[i];
         if(task.description === description.value){
           task.index = +container.id.substr(container.id.length - 1);
+          checked.push(tasks.list.splice(i,1)[0]);
+          break;
         } 
-      })
-
+      }
     })
+    tasks.list = [...checked];
     tasks.list = tasks.list.sort((a, b) => a.index - b.index);
     tasks.saveStorage();
   },
