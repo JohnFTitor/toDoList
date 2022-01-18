@@ -1,9 +1,11 @@
 import Task from './Task.js';
 import Dots from './icons/dots.svg';
-import Del from './icons/delete.svg';
+import DeleteImg from './icons/delete.svg';
 import { setStatus } from './completed.js';
 
+// Define the parent of the tasks
 const listContainer = document.querySelector('ul');
+
 export default class TaskCollection {
   constructor() {
     this.list = [];
@@ -22,6 +24,8 @@ export default class TaskCollection {
 
   loadStorage() {
     const collection = JSON.parse(localStorage.getItem('collection'));
+
+    // Add each task based on the info retrieved by the localStorage
     if (collection) {
       collection.forEach((task) => {
         this.addTask(task.description, task.completed);
@@ -33,10 +37,13 @@ export default class TaskCollection {
 
   removeTask(currentTask) {
     this.list.splice(currentTask.index - 1, 1);
+
+    // Get the div inside the card linked to the task
     const element = listContainer.querySelector(`#card-${currentTask.index}`);
     listContainer.removeChild(element.parentNode);
     let index = 1;
     this.list.forEach((task) => {
+      // Updates all further indexes if necessary
       if (task.index - index > 0) {
         const nextTask = listContainer.querySelector(`#card-${task.index}`);
         task.index -= 1;
@@ -48,8 +55,8 @@ export default class TaskCollection {
   }
 
   display(task) {
-    const listDropZone = document.createElement('li');
-    listDropZone.classList.add('task', 'card', 'dropparent');
+    const listParent = document.createElement('li');
+    listParent.classList.add('task', 'card', 'dropparent');
 
     const listItem = document.createElement('div');
     listItem.classList.add('task', 'dropzone');
@@ -74,17 +81,17 @@ export default class TaskCollection {
     dots.src = Dots;
     dots.alt = '';
 
-    const dragButton = document.createElement('button');
-    dragButton.appendChild(dots);
-    dragButton.setAttribute('draggable', true);
-    listItem.appendChild(dragButton);
+    const dragAndRemoveButton = document.createElement('button');
+    dragAndRemoveButton.appendChild(dots);
+    dragAndRemoveButton.setAttribute('draggable', true);
+    listItem.appendChild(dragAndRemoveButton);
 
     const checkBox = listItem.querySelector('.check');
     checkBox.checked = task.completed;
     setStatus(task, checkBox, description);
 
-    listDropZone.appendChild(listItem);
-    listContainer.appendChild(listDropZone);
+    listParent.appendChild(listItem);
+    listContainer.appendChild(listParent);
 
     description.addEventListener('change', (event) => {
       task.description = event.target.value;
@@ -93,10 +100,10 @@ export default class TaskCollection {
 
     description.addEventListener('click', () => {
       listItem.style.backgroundColor = '#f1f0cc';
-      dots.src = Del;
+      dots.src = DeleteImg;
     });
 
-    dragButton.addEventListener('mouseup', () => {
+    dragAndRemoveButton.addEventListener('mouseup', () => {
       this.removeTask(task);
     });
 
