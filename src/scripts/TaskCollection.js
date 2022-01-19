@@ -8,7 +8,7 @@ const listContainer = document.querySelector('ul');
 
 export default class TaskCollection {
   constructor() {
-    this.list = [];
+    this.list =  [];
   }
 
   saveStorage() {
