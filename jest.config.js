@@ -4,8 +4,7 @@ module.exports = {
   // ...
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   // ...
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.svg$": "<rootDir>/svgTransform.js"
- },
+  moduleNameMapper: {
+    '^.+\\.svg$': '<rootDir>/src/__mocks__/svgMock.js',
+  },
 };
