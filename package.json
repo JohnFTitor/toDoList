@@ -4,7 +4,7 @@
   "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch --coverage",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
     "build": "webpack",
@@ -30,6 +30,7 @@
     "gh-pages": "^3.2.3",
     "hint": "^6.1.9",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "mini-css-extract-plugin": "^2.4.6",
     "sass": "^1.47.0",
     "sass-loader": "^12.4.0",
