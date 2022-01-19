@@ -16,7 +16,7 @@ A simple and minimalistic To Do List to keep track on tasks during the day.
 
 ## Live Demo
 
-[Live Demo Link](https://johnftitor.github.io/toDoList/dist/index.html)
+[Live Demo Link](https://johnftitor.github.io/toDoList)
 
 
 ## Getting Started
