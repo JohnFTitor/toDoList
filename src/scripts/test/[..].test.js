@@ -64,16 +64,16 @@ describe('Testing Remove Task', () => {
   test('Remove one task from list', () => {
     document.body.innerHTML = `
       <ul>
-			  <li>
-				  <div id='card-1'></div>
-				</li>
-			  <li>
-				  <div id='card-2'></div>
-				</li>
-			  <li>
-				  <div id='card-3'></div>
-          </li>
-          </ul>
+        <li>
+        <div id='card-1'></div>
+        </li>
+        <li>
+          <div id='card-2'></div>
+        </li>
+        <li>
+          <div id='card-3'></div>
+        </li>
+      </ul>
           `;
     const tasks = new TaskCollection();
 
@@ -92,23 +92,23 @@ describe('Testing Remove Task', () => {
 
   test('Indexes are updated', () => {
     document.body.innerHTML = `
-      <ul>
-			  <li>
-				  <div id='card-1'></div>
-				</li>
-			  <li>
-				  <div id='card-2'></div>
-				</li>
-			  <li>
-				  <div id='card-3'></div>
-          </li>
-        <li>
-				  <div id='card-4'></div>
-        </li>
-        <li>
-				  <div id='card-5'></div>
-        </li>    
-        </ul>
+    <ul>
+      <li>
+        <div id='card-1'></div>
+      </li>
+      <li>
+        <div id='card-2'></div>
+      </li>
+      <li>
+        <div id='card-3'></div>
+      </li>
+      <li>
+        <div id='card-4'></div>
+      </li>
+      <li>
+        <div id='card-5'></div>
+      </li>    
+    </ul>
         `;
     const tasks = new TaskCollection();
 
@@ -132,24 +132,24 @@ describe('Testing Remove Task', () => {
 
   test('Remove multiple tasks DOM', () => {
     document.body.innerHTML = `
-      <ul>
-			  <li>
-				  <div id='card-1'></div>
-				</li>
-			  <li>
-				  <div id='card-2'></div>
-				</li>
-			  <li>
-				  <div id='card-3'></div>
-        </li>
-        <li>
-				  <div id='card-4'></div>
-        </li>
-        <li>
-				  <div id='card-5'></div>
-        </li>    
-        </ul>
-        `;
+    <ul>
+      <li>
+        <div id='card-1'></div>
+      </li>
+      <li>
+        <div id='card-2'></div>
+      </li>
+      <li>
+        <div id='card-3'></div>
+      </li>
+      <li>
+        <div id='card-4'></div>
+      </li>
+      <li>
+        <div id='card-5'></div>
+      </li>    
+    </ul>
+    `;
     const tasks = new TaskCollection();
 
     tasks.list = [
