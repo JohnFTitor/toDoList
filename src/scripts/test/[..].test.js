@@ -1,4 +1,5 @@
 import TaskCollection from '../TaskCollection.js';
+import triggerEvent from '../triggerEvent.js';
 
 describe('Testing add task', () => {
   test('To add a task with just text', () => {
@@ -204,5 +205,22 @@ describe('Testing Remove Task', () => {
     const listDOM = [...document.querySelectorAll('li')];
 
     expect(listDOM[2].innerHTML.trim()).toBe('<div id="card-3"></div>');
+  });
+});
+
+describe('Testing Edit Event', () => {
+  test(('Edit one Task inside list'), () => {
+    document.body.innerHTML = '<ul></ul>';
+    const tasks = new TaskCollection();
+
+    const task = tasks.addTask('Task 1');
+    tasks.display(task);
+
+    const descriptionElement = document.querySelector('.description');
+    descriptionElement.value = 'Task 2';
+
+    triggerEvent(descriptionElement, 'change');
+
+    expect(tasks.list[0].description).toBe('Task 2');
   });
 });
