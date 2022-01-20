@@ -45,6 +45,7 @@
     "webpack-dev-server": "^4.7.2"
   },
   "dependencies": {
-    "jest-config": "^27.4.7"
+    "jest-config": "^27.4.7",
+    "jsdom": "^19.0.0"
   }
 }

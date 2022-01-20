@@ -5,6 +5,7 @@ import { setStatus } from './completed.js';
 
 // Define the parent of the tasks
 const listContainer = document.querySelector('ul');
+console.log(listContainer);
 
 export default class TaskCollection {
   constructor() {
