@@ -167,4 +167,42 @@ describe('Testing Remove Task', () => {
 
     expect(listDOM).toHaveLength(3);
   });
+
+  test('Indexes are updated DOM', () => {
+    document.body.innerHTML = `
+    <ul>
+      <li>
+        <div id='card-1'></div>
+      </li>
+      <li>
+        <div id='card-2'></div>
+      </li>
+      <li>
+        <div id='card-3'></div>
+      </li>
+      <li>
+        <div id='card-4'></div>
+      </li>
+      <li>
+        <div id='card-5'></div>
+      </li>    
+    </ul>
+    `;
+    const tasks = new TaskCollection();
+
+    tasks.list = [
+      { description: 'Task 1', completed: true, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+      { description: 'Task 3', completed: false, index: 3 },
+      { description: 'Task 4', completed: false, index: 4 },
+      { description: 'Task 5', completed: false, index: 5 },
+    ];
+
+    tasks.removeTask(tasks.list[3]);
+    tasks.removeTask(tasks.list[2]);
+
+    const listDOM = [...document.querySelectorAll('li')];
+
+    expect(listDOM[2].innerHTML.trim()).toBe('<div id="card-3"></div>');
+  });
 });
