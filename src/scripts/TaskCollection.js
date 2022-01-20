@@ -3,9 +3,6 @@ import Dots from './icons/dots.svg';
 import DeleteImg from './icons/delete.svg';
 import { setStatus } from './completed.js';
 
-// Define the parent of the tasks
-const listContainer = document.querySelector('ul');
-
 export default class TaskCollection {
   constructor() {
     this.list = [];
@@ -56,6 +53,8 @@ export default class TaskCollection {
   }
 
   display(task) {
+    const listContainer = document.querySelector('ul');
+
     const listParent = document.createElement('li');
     listParent.classList.add('task', 'card', 'dropparent');
 

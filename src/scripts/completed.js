@@ -8,8 +8,10 @@ function setStatus(item, element, input) {
 }
 
 function clearCompleted(collection) {
-  const newCollection = collection.filter((item) => item.completed);
-  return newCollection;
+  const newCollection = collection.list.filter((item) => item.completed);
+  newCollection.forEach((task) => {
+    collection.removeTask(task);
+  });
 }
 
 export { setStatus, clearCompleted };
