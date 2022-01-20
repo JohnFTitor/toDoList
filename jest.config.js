@@ -7,8 +7,4 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.svg$': '<rootDir>/src/__mocks__/svgMock.js',
   },
-
-  setupFiles: [
-    './src/__mocks__/client.js',
-  ],
 };
