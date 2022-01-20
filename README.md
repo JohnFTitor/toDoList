@@ -64,7 +64,13 @@ The deployment can be found in the Github Pages of this repository or through th
 - Twitter: [@johnftitor](https://twitter.com/johnftitor)
 - LinkedIn: [Andres](https://www.linkedin.com/in/andresfelipe117/?locale=en_US)
 
-## Acknowledgments
+## Contributors
+
+👤 **Oyelakin Ridwan**
+
+- GitHub: [@oyelakingG9](https://github.com/oyelakinG9/setup_project.git)
+- Twitter: [@oyelakinG9](https://github.com/oyelakinG9/setup_project.git)
+- LinkedIn: [Oyelakin](https://www.linkedin.com/in/oyelakin-ridwan-4b4a02b6)
 
 ## Show your support
 
