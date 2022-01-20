@@ -37,6 +37,7 @@ export default class TaskCollection {
   }
 
   removeTask(currentTask) {
+    const listContainer = document.querySelector('ul');
     this.list.splice(currentTask.index - 1, 1);
 
     // Get the div inside the card linked to the task

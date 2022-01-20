@@ -64,27 +64,27 @@ describe('Testing Remove Task', () => {
 				</li>
 			  <li>
 				  <div id='card-3'></div>
-				</li>
-			</ul>
-		`;
-	});
-	const tasks = new TaskCollection();
-
-	tasks.list = [
-		{ description: 'Task 1', completed: true, index: 1 },
-		{ description: 'Task 2', completed: false, index: 1 },
-		{ description: 'Task 3', completed: false, index: 3 },
-	];
-
-	const taskToRemove = tasks.list[1];
-
-	tasks.removeTask(taskToRemove);
-
-	const listItems = document.querySelectorAll('li');
-	
-	expect(listItems).toContainEqual(`
-		<li>
-		<div id='card-2'></div>
-	</li>
-	`);
+          </li>
+          </ul>
+          `;
+          const tasks = new TaskCollection();
+        
+          tasks.list = [
+            { description: 'Task 1', completed: true, index: 1 },
+            { description: 'Task 2', completed: false, index: 1 },
+            { description: 'Task 3', completed: false, index: 3 },
+          ];
+        
+          const taskToRemove = tasks.list[1];
+        
+          tasks.removeTask(taskToRemove);
+        
+          const listItems = document.querySelectorAll('li');
+          
+          expect(listItems).not.toContainEqual(`
+            <li>
+            <div id='card-2'></div>
+          </li>
+          `);
+        });
 });
