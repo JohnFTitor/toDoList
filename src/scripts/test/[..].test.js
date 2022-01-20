@@ -224,3 +224,34 @@ describe('Testing Edit Event', () => {
     expect(tasks.list[0].description).toBe('Task 2');
   });
 });
+
+describe('Testing checkBox', () => {
+  test(('Toggle status from false to true'), () => {
+    document.body.innerHTML = '<ul></ul>';
+    const tasks = new TaskCollection();
+
+    const task = tasks.addTask('Task 1');
+    tasks.display(task);
+
+    const checkBox = document.querySelector('.check');
+    checkBox.checked = true;
+
+    triggerEvent(checkBox, 'change');
+
+    expect(tasks.list[0].completed).toBe(true);
+  });
+  test(('Toggle status from true to false'), () => {
+    document.body.innerHTML = '<ul></ul>';
+    const tasks = new TaskCollection();
+
+    const task = tasks.addTask('Task 1', true);
+    tasks.display(task);
+
+    const checkBox = document.querySelector('.check');
+    checkBox.checked = false;
+
+    triggerEvent(checkBox, 'change');
+
+    expect(tasks.list[0].completed).toBe(false);
+  });
+});
