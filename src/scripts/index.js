@@ -37,10 +37,7 @@ window.onload = () => {
 
 // Removes all completed tasks
 clearButton.addEventListener('click', () => {
-  const completedList = clearCompleted(tasks.list);
-  completedList.forEach((task) => {
-    tasks.removeTask(task);
-  });
+  clearCompleted(tasks);
 });
 
 // Define Drag And Drop Event listeners

@@ -1,5 +1,6 @@
 import TaskCollection from '../TaskCollection.js';
 import triggerEvent from '../triggerEvent.js';
+import { clearCompleted } from '../completed.js';
 
 describe('Testing add task', () => {
   test('To add a task with just text', () => {
@@ -253,5 +254,81 @@ describe('Testing checkBox', () => {
     triggerEvent(checkBox, 'change');
 
     expect(tasks.list[0].completed).toBe(false);
+  });
+});
+
+describe('Testing Clear All Completed', () => {
+  test('Clear 3 items from the list', () => {
+    document.body.innerHTML = `
+    <ul>
+      <li>
+        <div id='card-1'></div>
+      </li>
+      <li>
+        <div id='card-2'></div>
+      </li>
+      <li>
+        <div id='card-3'></div>
+      </li>
+      <li>
+        <div id='card-4'></div>
+      </li>
+      <li>
+        <div id='card-5'></div>
+      </li>    
+    </ul>
+        `;
+    const tasks = new TaskCollection();
+
+    tasks.list = [
+      { description: 'Task 1', completed: true, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+      { description: 'Task 3', completed: true, index: 3 },
+      { description: 'Task 4', completed: false, index: 4 },
+      { description: 'Task 5', completed: true, index: 5 },
+    ];
+
+    clearCompleted(tasks);
+
+    expect(tasks.list).toEqual([
+      { description: 'Task 2', completed: false, index: 1 },
+      { description: 'Task 4', completed: false, index: 2 },
+    ]);
+  });
+  test('Clear 3 items from the DOM', () => {
+    document.body.innerHTML = `
+    <ul>
+      <li>
+        <div id='card-1'></div>
+      </li>
+      <li>
+        <div id='card-2'></div>
+      </li>
+      <li>
+        <div id='card-3'></div>
+      </li>
+      <li>
+        <div id='card-4'></div>
+      </li>
+      <li>
+        <div id='card-5'></div>
+      </li>    
+    </ul>
+        `;
+    const tasks = new TaskCollection();
+
+    tasks.list = [
+      { description: 'Task 1', completed: true, index: 1 },
+      { description: 'Task 2', completed: false, index: 2 },
+      { description: 'Task 3', completed: true, index: 3 },
+      { description: 'Task 4', completed: false, index: 4 },
+      { description: 'Task 5', completed: true, index: 5 },
+    ];
+
+    clearCompleted(tasks);
+
+    const listDOM = [...document.querySelectorAll('li')];
+
+    expect(listDOM[2]).toBeUndefined();
   });
 });
