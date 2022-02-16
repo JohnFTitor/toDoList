@@ -2,11 +2,11 @@
 
 # To Do List
 
-> In this project, I will build a simple HTML list of To Do tasks. This simple web page will be built using webpack and served by a webpack dev server
+> In this project, I built a simple HTML list of To-Do tasks. This simple web page was built using Webpack, creating everything from a JavaScript index file that imported all the modules and assets
 
 ![Preview](./preview.gif)
 
-A simple and minimalistic To Do List to keep track on tasks during the day.
+A simple and minimalistic To Do List to keep track on tasks during the day. Don't miss on your daily duties. Add, Edit, Re-organize, Delete, and clear are all the functionalities of this webapp. Give it a try!
 
 ## Built With
 
