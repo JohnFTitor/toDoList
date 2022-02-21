@@ -111,12 +111,12 @@ input[type=checkbox] {
   background-color: transparent;
 }
 
-.checkmark:after {
+.checkmark::after {
   content: "";
   position: absolute;
   display: none;
   left: 4px;
-  top: 0px;
+  top: 0;
   width: 4px;
   height: 10px;
   border: solid white;
@@ -126,7 +126,7 @@ input[type=checkbox] {
   transform: rotate(45deg);
 }
 
-input[type=checkbox]:checked ~ .checkmark:after {
+input[type=checkbox]:checked ~ .checkmark::after {
   display: block;
 }
 
